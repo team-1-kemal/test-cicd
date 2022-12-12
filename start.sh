@@ -1,0 +1,1 @@
+pm2 stop testcicd && pm2 start --name testcicd index.js

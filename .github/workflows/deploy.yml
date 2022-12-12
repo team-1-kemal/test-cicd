@@ -1,0 +1,29 @@
+name: deploy
+
+on:
+  pull_request:
+    branches: main
+  push:
+    branches: main
+
+jobs:
+  deployment:
+    runs-on: ubuntu
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy to SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          sync: true
+          script: |
+            DIR="/home/team-1/app/test-cicd" \`
+            && cd $DIR \
+            && git pull origin main
+            && npm install
+            && sh ./start.sh
+           
