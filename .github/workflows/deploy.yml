@@ -23,7 +23,7 @@ jobs:
           script: |
             DIR="/home/team-1/app/test-cicd" \`
             && cd $DIR \
-            && git pull origin main
-            && npm install
+            && git pull origin main \
+            && npm install \
             && sh ./start.sh
            
