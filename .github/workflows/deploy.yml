@@ -24,6 +24,6 @@ jobs:
             DIR="/home/team-1/app/test-cicd" \
             && cd $DIR \
             && git pull origin main \
-            && npm install \
+            && /home/team-1/.fnm/node-versions/v16.18.0/installation/bin/npm install \
             && sh ./start.sh
            
